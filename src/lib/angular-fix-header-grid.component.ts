@@ -1,41 +1,86 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Store } from './store/store';
+import { AngularFixHeaderGridService } from './angular-fix-header-grid.service';
+import { Column } from './models/Column.model';
+import { Configs } from './models/Configs.model';
 
 @Component({
   selector: 'db-angular-fix-header-grid',
   templateUrl: 'angular-fix-header-grid.component.html',
   styleUrls: ['./angular-fix-header-grid.component.scss']
 })
-export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit {
+export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnChanges {
 
-  data: any = [
-    { id: 1, name: 'Ashok1', age: 60, parent: 0, weight: 60, gender: 1, phone: 7930343463},
-    { id: 2, name: 'Sam', age: 40, parent: 1, weight: 60, gender: 1, phone: 7930343463},
-    { id: 3, name: 'Sriya', age: 36, parent: 1, weight: 60, gender: 1, phone: 7930343463},
-    { id: 4, name: 'Prakash', age: 20, parent: 2, weight: 60, gender: 1, phone: 7930343463},
-    { id: 5, name: 'Sneha', age: 21, parent: 3, weight: 60, gender: 1, phone: 7930343463},
-    { id: 6, name: 'Pritam', age: 60, parent: 34, weight: 60, gender: 1, phone: 7930343463},
-    { id: 7, name: 'Roshan', age: 40, parent: 6, weight: 60, gender: 1, phone: 7930343463},
-    { id: 8, name: 'Suraj', age: 36, parent: 6, weight: 60, gender: 1, phone: 7930343463},
-    { id: 9, name: 'Swarup', age: 20, parent: 8, weight: 60, gender: 1, phone: 7930343463},
-    { id: 10, name: 'Aditya', age: 21, parent: 8, weight: 60, gender: 1, phone: 7930343463},
-  ];
-  height = '100px';
-  headers = ['Id', 'name', 'age', 'weight', 'gender', 'phone'];
-  body = [
-    [1, 'Ashok1', 60, 60, 1, 7930343463],
-    [1, 'Ashok1', 60, 60, 1, 7930343463],
-    [1, 'Ashok1', 60, 60, 1, 7930343463],
-    [1, 'Ashok1zxczxc', 60, 60, 1, 7930343463],
-    [1, 'Ashok1', 60, 60, 1, 7930343463],
-    [1, 'Ashok1', 60, 60, 1, 7930343463],
-    [1, 'Ashok1', 60, 60, 1, 7930343463]
-  ];
+  processed_data: any[] = [];
+  columns: Column[] = [];
+  edit_tracker: any = {}; // Track Edit options.
+  internal_configs: any = {
+    show_add_row: false,
+    all_selected: false
+  };
+  store = new Store(this.angularFixHeaderGridService);
 
-  widths = ['auto', 'auto', 'auto', 'auto', 'auto', 'auto'];
+  @Input()
+  data: any[] = [];
 
-  constructor() { }
+  @Input()
+  configs: Configs;
+
+  default_configs: Configs = {
+    css: {
+      expand_class: 'plus',
+      collapse_class: 'minus',
+      add_class: 'plus',
+      edit_class: '',
+      delete_class: '',
+      save_class: '',
+      cancel_class: '',
+      row_selection_class: 'selected',
+      header_class: '',
+      row_filter_class: '',
+      table_class: ''
+    },
+    actions: {
+      edit: false,
+      add: false,
+      delete: false,
+      resolve_edit: false,
+      resolve_add: false,
+      resolve_delete: false
+    },
+    data_loading_text: 'Loading...',
+    filter: false,
+    multi_select: false,
+    show_summary_row: false,
+    action_column_width: '60px',
+    row_class_function: () => true,
+    row_edit_function: () => true,
+    row_delete_function: () => true
+  };
+  default_column_config: Column = {
+    sorted: 0,
+    sort_type: null,
+    editable: false,
+    hidden: false,
+    filter: true,
+    case_sensitive_filter: false
+  };
+
+   @Output() cellclick: EventEmitter<any> = new EventEmitter();
+   @Output() rowselect: EventEmitter<any> = new EventEmitter();
+   @Output() rowdeselect: EventEmitter<any> = new EventEmitter();
+   @Output() rowselectall: EventEmitter<any> = new EventEmitter();
+   @Output() rowdeselectall: EventEmitter<any> = new EventEmitter();
+   @Output() rowadd: EventEmitter<any> = new EventEmitter();
+   @Output() rowsave: EventEmitter<any> = new EventEmitter();
+   @Output() rowdelete: EventEmitter<any> = new EventEmitter();
+
+  constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
 
   ngOnInit() {
+    this.validateConfigs();
+    this.setDefaultConfigs();
+    this.setColumnNames();
   }
 
   ngAfterViewInit() {
@@ -43,21 +88,73 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit {
       const ths: any = document.querySelectorAll('thead > tr th');
       const tds: any = document.querySelectorAll('tbody tr td');
 
-      if (ths[0].clientWidth !== undefined) {
+      if (ths[0] && ths[0].clientWidth !== undefined) {
         console.log(ths[0].clientWidth);
 
         for (let index = 0; index < ths.length; index++) {
           const th = ths[index];
           const td = tds[index];
           if (th.clientWidth > td.clientWidth) {
-            this.widths[index] = th.clientWidth;
+            // this.widths[index] = th.clientWidth;
           } else {
-            this.widths[index] = td.clientWidth;
+            // this.widths[index] = td.clientWidth;
           }
         }
         clearInterval(interval);
       }
     }, 300);
+  }
+
+  ngOnChanges() {
+    this.validateConfigs();
+    this.setDefaultConfigs();
+    this.setColumnNames();
+    this.store.processData(
+      this.data,
+      this.configs,
+      this.edit_tracker,
+      this.internal_configs
+    );
+  }
+
+  validateConfigs() {
+    if (!this.data) {
+      window.console.warn('data can\'t be empty!');
+      return;
+    }
+    if (!this.configs) {
+      window.console.warn('configs can\'t be empty!');
+      return;
+    }
+  }
+
+  setDefaultConfigs() {
+    this.processed_data = [];
+    this.configs = Object.assign({}, this.default_configs, this.configs);
+
+    // Deep clone.
+    this.configs.actions = Object.assign({}, this.default_configs.actions, this.configs.actions);
+    this.configs.css = Object.assign({}, this.default_configs.css, this.configs.css);
+  }
+
+  setColumnNames() {
+    this.columns = this.configs.columns ? this.configs.columns : [];
+
+    // If columns doesn't exist in user's object.
+    if (!this.configs.columns && this.data[0]) {
+      const column_keys = Object.keys(this.data[0]);
+
+      // Insert Header and default configuration.
+      column_keys.forEach(key => {
+        this.columns.push(Object.assign({'header': key, 'name': key}, this.default_column_config));
+      });
+    } else {
+
+      // Insert Header and default configuration.
+      for (let i = 0; i < this.columns.length; i++) {
+        this.columns[i] = Object.assign({}, this.default_column_config, this.columns[i]);
+      }
+    }
   }
 
 }

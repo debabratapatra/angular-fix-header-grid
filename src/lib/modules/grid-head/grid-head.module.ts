@@ -6,6 +6,7 @@ import { GridHeadComponent } from './grid-head.component';
   declarations: [GridHeadComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [GridHeadComponent]
 })
 export class GridHeadModule { }
