@@ -1,0 +1,20 @@
+<table [attr.class]="'db-grid-view ' + configs.css.table_class">
+    <thead>
+        <tr>
+            <th *ngFor="let header of headers; let i = index" [attr.width]="widths[i]">
+                <div [innerHTML]="header"></div>
+            </th>
+        </tr>
+    </thead>
+</table>
+<div [ngStyle]="{'height': height}" class="table-container">
+    <table [attr.class]="'db-grid-view ' + configs.css.table_class">
+        <tbody>
+            <tr *ngFor="let row of body">
+                <td *ngFor="let cell of row; let i = index" [attr.width]="widths[i]">
+                    <div [innerHTML]="cell"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
