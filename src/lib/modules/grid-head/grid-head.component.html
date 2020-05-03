@@ -16,8 +16,5 @@
     <th *ngFor="let column of columns" [ngClass]="{'column-hide': column.hidden}" [attr.width]="column.width">
       <div [innerHTML]="column.header_renderer ? column.header_renderer(column.header) : column.header"></div>    
     </th>
-    <th *ngIf="(configs.show_parent_on_edit && internal_configs.show_parent_col) || internal_configs.show_add_row">
-      Parent
-    </th>
   </tr>
-  </ng-container>
+</ng-container>

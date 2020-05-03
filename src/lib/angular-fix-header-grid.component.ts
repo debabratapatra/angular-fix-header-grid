@@ -95,9 +95,11 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
           const th = ths[index];
           const td = tds[index];
           if (th.clientWidth > td.clientWidth) {
-            // this.widths[index] = th.clientWidth;
+            td.style.width = th.clientWidth + 'px';
+            th.style.width = th.clientWidth + 'px';
           } else {
-            // this.widths[index] = td.clientWidth;
+            th.style.width = td.clientWidth + 'px';
+            td.style.width = td.clientWidth + 'px';
           }
         }
         clearInterval(interval);

@@ -20,9 +20,9 @@
 <div [ngStyle]="{'height': height}" class="table-container">
     <table [attr.class]="'db-grid-view ' + configs.css.table_class">
         <tbody>
-            <tr *ngFor="let row of body">
-                <td *ngFor="let cell of row; let i = index" [attr.width]="widths[i]">
-                    <div [innerHTML]="cell"></div>
+            <tr *ngFor="let row of data">
+                <td *ngFor="let column of columns; let i = index">
+                    <div [innerHTML]="row[column.name]"></div>
                 </td>
             </tr>
         </tbody>
