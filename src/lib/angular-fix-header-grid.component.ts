@@ -88,7 +88,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
       const ths: any = document.querySelectorAll('thead > tr th');
       const tds: any = document.querySelectorAll('tbody tr td');
 
-      if (ths[0] && ths[0].clientWidth !== undefined) {
+      if (ths[0] && tds[0] && ths[0].clientWidth !== undefined) {
         console.log(ths[0].clientWidth);
 
         for (let index = 0; index < ths.length; index++) {

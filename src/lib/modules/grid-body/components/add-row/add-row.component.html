@@ -19,7 +19,7 @@
         (canceledit)="cancelAddEdit()"
         (editcomplete)="saveAddRecord($event)">
     </db-custom-cell-editor-component>
-    <db-tree-cell-editor 
+    <db-grid-cell-editor 
         *ngIf="!column.editor"
         [cell_value]="" 
         [row_data]="row_data" 
@@ -27,6 +27,6 @@
         (canceledit)="cancelAddEdit()"
         (editcomplete)="saveAddRecord($event)"
         >
-    </db-tree-cell-editor>
+    </db-grid-cell-editor>
   </div>
 </td>

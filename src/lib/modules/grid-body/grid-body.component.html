@@ -31,7 +31,7 @@
         <input type="checkbox" [checked]="row_data.row_selected" (click)="selectRowOnCheck(row_data, $event)" 
           [attr.disabled]="row_data.selection_disabled">
       </td>
-      <td db-tree-cell-actions 
+      <td db-grid-cell-actions 
         *ngIf="(configs.actions.edit || configs.actions.delete || configs.actions.add)"
         [row_data]="row_data"
         [configs]="configs"
@@ -45,7 +45,7 @@
       <td *ngFor="let column of columns; index as i" 
       class="{{column.css_class}}"
       [ngClass]="{'column-hide': column.hidden, 'expand-column': i == 0}">
-        <db-tree-cell
+        <db-grid-cell
           [configs]="configs"
           [column]="column"
           [index]="i"
@@ -57,7 +57,7 @@
           (rowcollapse)="onRowCollapse($event)"
           (editcomplete)="saveRecord($event)"
         >
-        </db-tree-cell>
+        </db-grid-cell>
       </td>
     </ng-container>
   </tr>

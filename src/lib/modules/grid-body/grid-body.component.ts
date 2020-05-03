@@ -5,7 +5,7 @@ import { Column } from '../../models/Column.model';
 import { AngularFixHeaderGridService } from '../../angular-fix-header-grid.service';
 
 @Component({
-  selector: 'db-grid-body',
+  selector: '[db-grid-body]',
   templateUrl: './grid-body.component.html',
   styleUrls: ['./grid-body.component.scss']
 })

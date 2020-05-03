@@ -1,3 +1,34 @@
-<p>
-  grid-cell works!
-</p>
+<div (click)="onCellClick($event)">
+  <ng-container *ngIf="!edit_on || !column.editable" [ngSwitch]="column.type">
+    <db-custom-cell-component 
+      *ngSwitchCase="'custom'"
+      [column]="column" 
+      [row_data]="row_data">
+    </db-custom-cell-component>
+    <db-grid-cell-view
+      *ngSwitchDefault 
+      [column] = "column"
+      [row_data] = "row_data">
+    </db-grid-cell-view>
+  </ng-container> 
+
+  <ng-container *ngIf="edit_on && column.editable">
+      <db-custom-cell-editor-component 
+        *ngIf="column.editor" 
+        [cell_value]="cell_value" 
+        [column]="column" 
+        [row_data]="row_data"
+        (canceledit)="canceledit.emit(row_data['pathx'])"
+        (editcomplete)="onEditComplete($event)">
+    </db-custom-cell-editor-component>
+    <db-grid-cell-editor 
+        *ngIf="!column.editor"
+        [cell_value]="cell_value" 
+        [row_data]="row_data" 
+        [column]="column"
+        (canceledit)="canceledit.emit(row_data['pathx'])"
+        (editcomplete)="onEditComplete($event)"
+        >
+    </db-grid-cell-editor>
+  </ng-container> 
+</div>

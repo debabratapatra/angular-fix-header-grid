@@ -84,4 +84,9 @@ export class Store {
         this.angularFixHeaderGridService.updateDisplayDataObservable(this.display_data);
     }
 
+    refreshDisplayData() {
+        this.display_data = this.processed_data;
+        this.angularFixHeaderGridService.updateDisplayDataObservable(this.display_data);
+    }
+
 }
