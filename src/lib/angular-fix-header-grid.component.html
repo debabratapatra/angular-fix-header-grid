@@ -19,12 +19,20 @@
 </table>
 <div [ngStyle]="{'height': height}" class="table-container">
     <table [attr.class]="'db-grid-view ' + configs.css.table_class">
-        <tbody>
-            <tr *ngFor="let row of data">
-                <td *ngFor="let column of columns; let i = index">
-                    <div [innerHTML]="row[column.name]"></div>
-                </td>
-            </tr>
+        <tbody 
+        db-grid-body
+        [store]="store"
+        [edit_tracker]="edit_tracker"
+        [internal_configs]="internal_configs"
+        [columns]="columns"
+        [configs]="configs"
+        [cellclick]="cellclick"
+        [rowdelete]="rowdelete"
+        [rowsave]="rowsave"
+        [rowadd]="rowadd"
+        [rowselect]="rowselect"
+        [rowdeselect]="rowdeselect"
+        >        
         </tbody>
     </table>
 </div>

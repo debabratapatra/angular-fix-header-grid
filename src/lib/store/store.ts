@@ -44,4 +44,44 @@ export class Store {
         this.configs = configs;
     }
 
+    filterBy(columns, search_values) {
+        this.display_data = this.processed_data.filter((record) => {
+            let found = true;
+            for (let index = 0; index < columns.length; index++) {
+                const column = columns[index];
+                let column_value = record[column.name];
+                let search_value = search_values[index];
+
+                // If blank then continue.
+                if (!search_value) {
+                    continue;
+                }
+
+                // Call custom filter function.
+                if (column.filter_function) {
+                    const response = column.filter_function(record, column, column_value, search_value);
+                    if (response === false) {
+                        found = false;
+                    }
+                } else {
+                    if (typeof (column_value) === 'number') {
+                        if (column_value !== parseInt(search_value, 10)) {
+                            found = false;
+                        }
+                    } else {
+                        if (!column.case_sensitive_filter) {
+                            column_value = column_value.toLowerCase();
+                            search_value = search_value.toLowerCase();
+                        }
+                        if (column_value.indexOf(search_value) === -1) {
+                            found = false;
+                        }
+                    }
+                }
+            }
+            return found;
+        });
+        this.angularFixHeaderGridService.updateDisplayDataObservable(this.display_data);
+    }
+
 }
