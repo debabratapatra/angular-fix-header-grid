@@ -38,7 +38,7 @@ export class Store {
 
     processData(data, configs: Configs, edit_tracker, internal_configs) {
         this.raw_data = data;
-        this.processed_data = data;
+        this.display_data = data;
         this.processed_data = data;
         this.setRawData(data);
         this.configs = configs;

@@ -57,7 +57,6 @@ export class GridBodyComponent implements OnInit {
     this.angularFixHeaderGridService.display_data_observable$.subscribe((store) => {
       this.display_data = this.store.getDisplayData();
     });
-
   }
 
   refreshData(element) {
