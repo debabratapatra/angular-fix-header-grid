@@ -7,6 +7,7 @@ export interface Configs {
     columns?: Column[];
     data_loading_text: string;
     action_column_width?: string;
+    height?: string;
     actions: Actions;
     filter: boolean;
     multi_select: boolean;

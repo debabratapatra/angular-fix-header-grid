@@ -89,19 +89,25 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
       const tds: any = document.querySelectorAll('tbody tr td');
 
       if (ths[0] && tds[0] && ths[0].clientWidth !== undefined) {
-        console.log(ths[0].clientWidth);
+        let totalWidth = 0;
 
         for (let index = 0; index < ths.length; index++) {
           const th = ths[index];
           const td = tds[index];
+          let cellWidth = 0;
           if (th.clientWidth > td.clientWidth) {
-            td.style.width = th.clientWidth + 'px';
-            th.style.width = th.clientWidth + 'px';
+            cellWidth = th.clientWidth + 1;
           } else {
-            th.style.width = td.clientWidth + 'px';
-            td.style.width = td.clientWidth + 'px';
+            cellWidth = td.clientWidth + 1;
           }
+          td.style.width = cellWidth + 'px';
+          th.style.width = cellWidth + 'px';
+
+          totalWidth += cellWidth;
         }
+
+        // Expand container
+        (<any>document.querySelector('div.fix-table-container')).style.width = totalWidth + 20 + 'px';
         clearInterval(interval);
       }
     }, 300);

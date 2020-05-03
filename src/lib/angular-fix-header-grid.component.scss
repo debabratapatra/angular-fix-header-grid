@@ -3,7 +3,7 @@ $sort-color: #ddd;
 $sort-hover-color: #afafaf;
 $sort-active-color: rgb(138, 137, 137);
 
-div.table-container {
+div.fix-table-container {
     display: inline-block;
     overflow: auto;
 }
@@ -19,4 +19,8 @@ div.table-container {
     word-break: keep-all;
     border: solid 1px gray;
     color: #4b4b4b;    
+}
+
+table.db-grid-header-view {
+    border-bottom: none;
 }

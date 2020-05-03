@@ -1,4 +1,4 @@
-<table [attr.class]="'db-grid-view ' + configs.css.table_class">
+<table [attr.class]="'db-grid-view db-grid-header-view' + configs.css.table_class">
     <thead 
         db-grid-head
         [store]="store"
@@ -17,7 +17,7 @@
         </tr>
     </thead> -->
 </table>
-<div [ngStyle]="{'height': height}" class="table-container">
+<div [ngStyle]="{'height': configs.height}" class="fix-table-container">
     <table [attr.class]="'db-grid-view ' + configs.css.table_class">
         <tbody 
         db-grid-body
