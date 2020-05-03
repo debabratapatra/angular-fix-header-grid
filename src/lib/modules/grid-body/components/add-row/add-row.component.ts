@@ -4,7 +4,7 @@ import { Column } from '../../../../models/Column.model';
 import { Configs } from '../../../../models/Configs.model';
 
 @Component({
-  selector: 'db-add-row',
+  selector: '[db-add-row]',
   templateUrl: './add-row.component.html',
   styleUrls: ['./add-row.component.scss']
 })

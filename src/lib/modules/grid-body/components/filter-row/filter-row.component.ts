@@ -4,7 +4,7 @@ import { Column } from '../../../../../lib/models/Column.model';
 import { Configs } from '../../../../../lib/models/Configs.model';
 
 @Component({
-  selector: 'db-filter-row',
+  selector: '[db-filter-row]',
   templateUrl: './filter-row.component.html',
   styleUrls: ['./filter-row.component.scss']
 })
