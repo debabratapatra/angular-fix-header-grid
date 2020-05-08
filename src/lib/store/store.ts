@@ -3,9 +3,9 @@ import { Configs } from '../models/Configs.model';
 import { AngularFixHeaderGridService } from '../angular-fix-header-grid.service';
 
 export class Store {
-    processed_data: any[];
+    processed_data: any[] = [];
     raw_data: any[];
-    display_data: any[];
+    display_data: any[] = [];
     configs: Configs;
 
     getRawData() {
@@ -38,9 +38,13 @@ export class Store {
 
     processData(data, configs: Configs, edit_tracker, internal_configs) {
         this.raw_data = data;
-        this.display_data = data;
         this.processed_data = data;
-        this.setRawData(data);
+        let index = 0;
+        this.processed_data.forEach(row => {
+            row.idx = index;
+            this.display_data[index] = row;
+            ++index;
+        });
         this.configs = configs;
     }
 
