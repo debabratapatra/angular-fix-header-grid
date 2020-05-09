@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Store } from '../../store/store';
 import { Configs } from '../../models/Configs.model';
 import { Column } from '../../models/Column.model';
+import { AngularFixHeaderGridService } from '../../angular-fix-header-grid.service';
 
 @Component({
   selector: '[db-grid-head]',
@@ -30,9 +31,23 @@ export class GridHeadComponent implements OnInit {
   @Input()
   rowdeselectall: EventEmitter<any>;
 
-  constructor() { }
+  constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
 
   ngOnInit() {
+  }
+
+  addRow() {
+    this.internal_configs.show_add_row = true;
+  }
+
+  selectAll(e) {
+    if (e.target.checked) {
+      this.angularFixHeaderGridService.selectAll(this.store.getDisplayData());
+      this.rowselectall.emit(this.store.getDisplayData());
+    } else {
+      this.angularFixHeaderGridService.deSelectAll(this.store.getDisplayData());
+      this.rowdeselectall.emit(e);
+    }
   }
 
 }

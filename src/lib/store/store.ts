@@ -49,6 +49,14 @@ export class Store {
         this.configs = configs;
     }
 
+    addRecord(row_data) {
+        this.raw_data.push(row_data);
+        let last_index = this.processed_data[this.processed_data.length - 1].idx;
+        row_data.idx = ++last_index;
+        this.processed_data.push(row_data);
+        this.display_data.push(row_data);
+    }
+
     filterBy(columns, search_values) {
         this.display_data = this.processed_data.filter((record) => {
             let found = true;

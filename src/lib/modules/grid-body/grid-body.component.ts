@@ -59,17 +59,6 @@ export class GridBodyComponent implements OnInit {
     });
   }
 
-  refreshData(element) {
-    this.expand_tracker = {};
-    this.edit_tracker = {};
-    this.store.processData(
-      this.store.getRawData(),
-      this.configs,
-      this.edit_tracker,
-      this.internal_configs
-    );
-  }
-
   saveRecord($event) {
     const element = $event.data;
 
@@ -91,7 +80,7 @@ export class GridBodyComponent implements OnInit {
   }
 
   checkAndRefreshData(element) {
-
+    this.edit_tracker[element.idx] = false;
   }
 
   addRow(element) {
@@ -105,10 +94,8 @@ export class GridBodyComponent implements OnInit {
 
       promise.then(() => {
         this.internal_configs.show_add_row = false;
-        this.refreshData(element);
       }).catch((err) => {});
     } else {
-      this.refreshData(element);
       this.internal_configs.show_add_row = false;
       this.rowadd.emit(element);
     }

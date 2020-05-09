@@ -39,7 +39,7 @@ export class AddRowComponent implements OnInit {
   }
 
   saveAddRecord(e) {
-    this.raw_data.push(this.row_data);
+    this.store.addRecord(this.row_data);
     this.rowadd.emit(this.row_data);
   }
 
