@@ -6,6 +6,7 @@ export interface Configs {
     css: CssClass;
     columns?: Column[];
     data_loading_text: string;
+    multi_select_width?: string;
     action_column_width?: string;
     height?: string;
     actions: Actions;

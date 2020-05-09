@@ -1,12 +1,12 @@
 <ng-container *ngIf="configs">
   <tr [ngClass]="configs.css.header_class">
-    <th *ngIf="configs.multi_select" class="checkbox_column">
+    <th *ngIf="configs.multi_select" class="checkbox_column" [attr.width]="configs.multi_select_width">
       <input type="checkbox" (click)="selectAll($event)" [checked]="this.internal_configs.all_selected">
     </th>
     <th 
       *ngIf="configs.actions.add || configs.actions.edit || configs.actions.delete" 
       class="action-column"
-      width="{{configs.action_column_width}}"
+      [attr.width]="configs.action_column_width"
       (click)="addRow()">
       <span class="icon-container">
         <i *ngIf="!internal_configs.show_add_row && configs.actions.add" [ngClass]="configs.css.add_class" aria-hidden="true" title="Add a row"></i>

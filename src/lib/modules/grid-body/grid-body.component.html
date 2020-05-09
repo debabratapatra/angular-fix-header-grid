@@ -26,12 +26,13 @@
     [attr.class]="configs.row_class_function(row_data) + ' ' + (row_data.row_selected ? configs.css.row_selection_class : '')"
     (click)="selectRow(row_data, $event)" 
     >  
-    <td *ngIf="configs.multi_select" class="checkbox_column">
+    <td *ngIf="configs.multi_select" class="checkbox_column" [attr.width]="configs.multi_select_width">
       <input type="checkbox" [checked]="row_data.row_selected" (click)="selectRowOnCheck(row_data, $event)" 
         [attr.disabled]="row_data.selection_disabled">
     </td>
     <td db-grid-cell-actions 
       *ngIf="(configs.actions.edit || configs.actions.delete || configs.actions.add)"
+      [attr.width]="configs.action_column_width"
       [row_data]="row_data"
       [configs]="configs"
       [store]="store"
@@ -42,7 +43,7 @@
       (editcomplete)="saveRecord($event)">
     </td>
     <td *ngFor="let column of columns; index as i" 
-    class="{{column.css_class}}"
+    class="{{column.css_class}}" [attr.width]="column.width"
     [ngClass]="{'column-hide': column.hidden, 'expand-column': i == 0}">
       <db-grid-cell
         [configs]="configs"

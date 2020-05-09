@@ -52,6 +52,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     filter: false,
     multi_select: false,
     show_summary_row: false,
+    multi_select_width: 'auto',
     action_column_width: '60px',
     row_class_function: () => true,
     row_edit_function: () => true,
@@ -90,6 +91,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
 
       if (ths[0] && tds[0] && ths[0].clientWidth !== undefined) {
         let totalWidth = 0;
+        let column_index = 0;
+        let hasActionSet = false;
 
         for (let index = 0; index < ths.length; index++) {
           const th = ths[index];
@@ -100,8 +103,19 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
           } else {
             cellWidth = td.clientWidth + 1;
           }
-          td.style.width = cellWidth + 'px';
-          th.style.width = cellWidth + 'px';
+          if (this.configs.multi_select && index === 0) {
+            column_index = 1;
+            this.configs.multi_select_width = cellWidth + 'px';
+          } else if ((this.configs.actions.edit || this.configs.actions.delete || this.configs.actions.add)
+            && (index === 1 || index === 0) && !hasActionSet) {
+            column_index = index === 0 ? 1 : 2;
+            this.configs.action_column_width = cellWidth + 'px';
+            hasActionSet = true;
+          } else {
+            this.columns[index - column_index].width = cellWidth + 'px';
+          }
+          // td.style.width = cellWidth + 'px';
+          // th.style.width = cellWidth + 'px';
 
           totalWidth += cellWidth;
         }
