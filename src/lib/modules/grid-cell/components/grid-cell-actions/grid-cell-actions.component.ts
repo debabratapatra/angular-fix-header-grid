@@ -37,7 +37,7 @@ export class GridCellActionsComponent implements OnInit {
     this.display_data = this.store.getDisplayData();
   }
 
-  enableEdit(index, row_data) {
+  enableEdit(index) {
     this.edit_tracker[index] = true;
   }
 

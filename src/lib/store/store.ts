@@ -43,6 +43,7 @@ export class Store {
         this.processed_data.forEach(row => {
             row.idx = index;
             this.display_data[index] = row;
+            edit_tracker[index] = false;
             ++index;
         });
         this.configs = configs;

@@ -50,7 +50,7 @@
         [index]="i"
         [row_data]="row_data"
         [expand_tracker]="expand_tracker"
-        [edit_on]="edit_tracker[row_data[configs.id_field]]"
+        [edit_on]="edit_tracker[row_data.idx]"
         [cellclick]="cellclick"
         (rowexpand)="onRowExpand($event)"
         (rowcollapse)="onRowCollapse($event)"

@@ -115,13 +115,12 @@ export class GridBodyComponent implements OnInit {
   }
 
   cancelEdit(row_data) {
-    // const index = row_data[this.configs.id_field];
+    const index = row_data.idx;
 
-    // // Cancel all changes ie copy from back up.
-    // Object.assign(row_data, this.internal_configs.current_edited_row);
+    // Cancel all changes ie copy from back up.
+    Object.assign(row_data, this.internal_configs.current_edited_row);
 
-    // this.edit_tracker[index] = false;
-    // this.internal_configs.show_parent_col = false;
+    this.edit_tracker[index] = false;
   }
 
   selectRow(row_data, event) {
