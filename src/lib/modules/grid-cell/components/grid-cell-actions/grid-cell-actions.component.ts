@@ -41,16 +41,16 @@ export class GridCellActionsComponent implements OnInit {
     this.edit_tracker[index] = true;
   }
 
-  findRecordIndex(pathx: number) {
+  findRecordIndex(idx: number) {
     for (const index in this.store.processed_data) {
-      if (this.store.processed_data[index].pathx === pathx) {
+      if (this.store.processed_data[index].idx === idx) {
         return Number(index);
       }
     }
   }
 
   deleteRecord(rec) {
-    const index: number = this.findRecordIndex(rec.pathx);
+    const index: number = this.findRecordIndex(rec.idx);
     if (this.configs.actions.resolve_delete) {
       const promise = new Promise((resolve, reject) => {
         this.rowdelete.emit({

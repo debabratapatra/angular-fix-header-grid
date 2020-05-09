@@ -31,14 +31,18 @@ export class Store {
 
     setDisplayData(display_data) {
         this.display_data = display_data;
-        // this.angularTreeGridService.updateDisplayDataObservable(this.display_data);
+        this.angularFixHeaderGridService.updateDisplayDataObservable(this.display_data);
     }
 
     constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
 
     processData(data, configs: Configs, edit_tracker, internal_configs) {
         this.raw_data = data;
-        this.processed_data = data;
+        let data_index = 0;
+        this.raw_data.forEach(row => {
+            this.processed_data[data_index] = row;
+            ++data_index;
+        });
         let index = 0;
         this.processed_data.forEach(row => {
             row.idx = index;
@@ -50,11 +54,10 @@ export class Store {
     }
 
     addRecord(row_data) {
-        this.raw_data.push(row_data);
         let last_index = this.processed_data[this.processed_data.length - 1].idx;
         row_data.idx = ++last_index;
         this.processed_data.push(row_data);
-        this.display_data.push(row_data);
+        this.setDisplayData(this.processed_data);
     }
 
     filterBy(columns, search_values) {
