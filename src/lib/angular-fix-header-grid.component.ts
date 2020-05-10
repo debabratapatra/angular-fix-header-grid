@@ -179,4 +179,14 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     }
   }
 
+  selectAll() {
+    this.angularFixHeaderGridService.selectAll(this.store.getDisplayData());
+    this.internal_configs.all_selected = true;
+  }
+
+  deSelectAll() {
+    this.angularFixHeaderGridService.deSelectAll(this.store.getDisplayData());
+    this.internal_configs.all_selected = false;
+  }
+
 }

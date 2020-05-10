@@ -14,3 +14,5 @@ import { GridHeadModule } from './modules/grid-head/grid-head.module';
   exports: [AngularFixHeaderGridComponent]
 })
 export class AngularFixHeaderGridModule { }
+
+export {DefaultEditor} from './modules/grid-cell/components/grid-cell-editor/default/default-editor.component';
