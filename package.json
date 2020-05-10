@@ -1,6 +1,6 @@
 {
   "name": "angular-fix-header-grid",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "homepage": "https://debabratapatra.github.io/angular-fix-header-grid",
   "peerDependencies": {
     "@angular/common": "^7.0.0",

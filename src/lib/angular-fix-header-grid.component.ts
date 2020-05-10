@@ -85,6 +85,22 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
   }
 
   ngAfterViewInit() {
+  }
+
+  ngOnChanges() {
+    this.validateConfigs();
+    this.setDefaultConfigs();
+    this.setColumnNames();
+    this.store.processData(
+      this.data,
+      this.configs,
+      this.edit_tracker,
+      this.internal_configs
+    );
+    this.setColumnWidth();
+  }
+
+  setColumnWidth() {
     const interval = setInterval(() => {
       const ths: any = document.querySelectorAll('table.db-grid-header-view thead > tr th');
       const tds: any = document.querySelectorAll('table.db-grid-body-view tbody tr td');
@@ -93,15 +109,16 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
         let totalWidth = 0;
         let column_index = 0;
         let hasActionSet = false;
+        const offset = 5;
 
         for (let index = 0; index < ths.length; index++) {
           const th = ths[index];
           const td = tds[index];
           let cellWidth = 0;
           if (th.clientWidth > td.clientWidth) {
-            cellWidth = th.clientWidth + 1;
+            cellWidth = th.clientWidth + offset;
           } else {
-            cellWidth = td.clientWidth + 1;
+            cellWidth = td.clientWidth + offset;
           }
           if (this.configs.multi_select && index === 0) {
             column_index = 1;
@@ -124,19 +141,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
         (<any>document.querySelector('div.fix-table-container')).style.width = totalWidth + 20 + 'px';
         clearInterval(interval);
       }
-    }, 300);
-  }
-
-  ngOnChanges() {
-    this.validateConfigs();
-    this.setDefaultConfigs();
-    this.setColumnNames();
-    this.store.processData(
-      this.data,
-      this.configs,
-      this.edit_tracker,
-      this.internal_configs
-    );
+    }, 500);
   }
 
   validateConfigs() {
