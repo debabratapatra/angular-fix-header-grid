@@ -86,8 +86,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
 
   ngAfterViewInit() {
     const interval = setInterval(() => {
-      const ths: any = document.querySelectorAll('thead > tr th');
-      const tds: any = document.querySelectorAll('tbody tr td');
+      const ths: any = document.querySelectorAll('table.db-grid-header-view thead > tr th');
+      const tds: any = document.querySelectorAll('table.db-grid-body-view tbody tr td');
 
       if (ths[0] && tds[0] && ths[0].clientWidth !== undefined) {
         let totalWidth = 0;

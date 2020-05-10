@@ -18,7 +18,7 @@
     </thead> -->
 </table>
 <div [ngStyle]="{'height': configs.height}" class="fix-table-container">
-    <table [attr.class]="'db-grid-view ' + configs.css.table_class">
+    <table [attr.class]="'db-grid-view db-grid-body-view ' + configs.css.table_class">
         <tbody 
         db-grid-body
         [store]="store"
