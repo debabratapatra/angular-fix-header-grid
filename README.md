@@ -1,4 +1,4 @@
-# Angular Fix/Freeze Header Grid
+# Angular 7 Fix/Freeze Header Grid
 Angular Fix Header Grid is a simple yet powerful grid with fix header feature. This means Header of the grid is fixed and body is scrollable. Please check the <a href="https://debabratapatra.github.io/pages/angular-fix-header-grid/demo" target="_blank">Examples</a>. Please <a href="mailto:debabratapatra12@gmail.com">contact</a>, if you are interested to use this component.
 
 ## Demo
