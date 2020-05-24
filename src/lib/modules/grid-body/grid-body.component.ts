@@ -153,4 +153,12 @@ export class GridBodyComponent implements OnInit {
 
   }
 
+  showSelectBox(row_data) {
+    if (this.configs.row_select_function) {
+      return this.configs.row_select_function(row_data);
+    } else {
+      return true;
+    }
+  }
+
 }

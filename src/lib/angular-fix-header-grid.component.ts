@@ -56,7 +56,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     action_column_width: '60px',
     row_class_function: () => true,
     row_edit_function: () => true,
-    row_delete_function: () => true
+    row_delete_function: () => true,
+    row_select_function: () => true
   };
   default_column_config: Column = {
     sorted: 0,

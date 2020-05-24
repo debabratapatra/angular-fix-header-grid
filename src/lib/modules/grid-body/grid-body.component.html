@@ -28,7 +28,7 @@
     >  
     <td *ngIf="configs.multi_select" class="checkbox_column" [attr.width]="configs.multi_select_width">
       <input type="checkbox" [checked]="row_data.row_selected" (click)="selectRowOnCheck(row_data, $event)" 
-        [attr.disabled]="row_data.selection_disabled">
+      *ngIf="showSelectBox(row_data)">
     </td>
     <td db-grid-cell-actions 
       *ngIf="(configs.actions.edit || configs.actions.delete || configs.actions.add)"
