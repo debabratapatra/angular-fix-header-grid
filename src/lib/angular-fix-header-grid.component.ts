@@ -52,6 +52,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     filter: false,
     multi_select: false,
     show_summary_row: false,
+    pagination: false,
+    per_row: 10,
     multi_select_width: 'auto',
     action_column_width: '60px',
     row_class_function: () => true,

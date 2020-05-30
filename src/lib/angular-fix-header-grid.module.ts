@@ -3,13 +3,15 @@ import { AngularFixHeaderGridComponent } from './angular-fix-header-grid.compone
 import { CommonModule } from '@angular/common';
 import { GridBodyModule } from './modules/grid-body/grid-body.module';
 import { GridHeadModule } from './modules/grid-head/grid-head.module';
+import { GridPaginationModule } from './modules/grid-pagination/grid-pagination.module';
 
 @NgModule({
   declarations: [AngularFixHeaderGridComponent],
   imports: [
     CommonModule,
     GridBodyModule,
-    GridHeadModule
+    GridHeadModule,
+    GridPaginationModule
   ],
   exports: [AngularFixHeaderGridComponent]
 })

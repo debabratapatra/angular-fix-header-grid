@@ -22,7 +22,7 @@
   </tr>
   <ng-container>
     <tr 
-    *ngFor="let row_data of display_data"
+    *ngFor="let row_data of grid_data"
     [attr.class]="configs.row_class_function(row_data) + ' ' + (row_data.row_selected ? configs.css.row_selection_class : '')"
     (click)="selectRow(row_data, $event)" 
     >  

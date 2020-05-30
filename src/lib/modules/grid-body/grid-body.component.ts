@@ -12,6 +12,7 @@ import { AngularFixHeaderGridService } from '../../angular-fix-header-grid.servi
 export class GridBodyComponent implements OnInit {
   raw_data: any[];
   display_data: any[];
+  grid_data: any[];
 
   @Input()
   store: Store;
@@ -54,9 +55,24 @@ export class GridBodyComponent implements OnInit {
 
   ngOnInit() {
     this.display_data = this.store.getDisplayData();
+    this.setupPagination();
+
     this.angularFixHeaderGridService.display_data_observable$.subscribe((store) => {
       this.display_data = this.store.getDisplayData();
+      this.setupPagination();
     });
+  }
+
+  setupPagination() {
+    if (this.configs.pagination) {
+      this.grid_data = this.display_data.slice(0, this.configs.per_row);
+
+      this.angularFixHeaderGridService.pagination_observable$.subscribe(page_number => {
+        const start = page_number * this.configs.per_row;
+        const end = start + this.configs.per_row;
+        this.grid_data = this.display_data.slice(start, end);
+      });
+    }
   }
 
   saveRecord($event) {

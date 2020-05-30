@@ -11,6 +11,8 @@ export interface Configs {
     height?: string;
     actions: Actions;
     filter: boolean;
+    pagination: boolean;
+    per_row: number;
     multi_select: boolean;
     show_summary_row: boolean;
     row_class_function: Function;

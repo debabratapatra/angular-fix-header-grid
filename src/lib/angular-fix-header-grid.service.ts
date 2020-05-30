@@ -8,6 +8,9 @@ export class AngularFixHeaderGridService {
   private display_data_observable = new Subject<any[]>();
   display_data_observable$ = this.display_data_observable.asObservable();
 
+  pagination_observable = new Subject<number>();
+  pagination_observable$ = this.pagination_observable.asObservable();
+
   constructor() { }
 
   updateDisplayDataObservable(display_data: any[]) {
