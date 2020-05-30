@@ -16,6 +16,7 @@ export class GridPaginationComponent implements OnInit {
   configs: Configs;
 
   items = [];
+  selections = [];
 
   constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
 
@@ -33,11 +34,17 @@ export class GridPaginationComponent implements OnInit {
 
     for (let index = 0; index < total; index++) {
       this.items.push(index + 1);
+      this.selections.push(false);
     }
+    this.selections[0] = true;
   }
 
   showPage(page_number) {
     this.angularFixHeaderGridService.pagination_observable.next(page_number);
+    for (let index = 0; index < this.selections.length; index++) {
+      this.selections[index] = false;
+    }
+    this.selections[page_number] = true;
   }
 
 }

@@ -1,7 +1,8 @@
 <div *ngIf="configs.pagination">
   <ul class="list">
     <li class="list-item first-item" (click)="showPage(0)">«</li>
-    <li *ngFor="let item of items" class="list-item" (click)="showPage(item - 1)">{{item}}</li>
+    <li *ngFor="let item of items" class="list-item" (click)="showPage(item - 1)" 
+    [ngClass]="{'selected': selections[item - 1]}">{{item}}</li>
     <li  class="list-item last-item" (click)="showPage(items.length - 1)">»</li>
   </ul>
 </div>
