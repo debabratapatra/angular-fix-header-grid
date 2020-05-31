@@ -65,11 +65,11 @@ export class GridBodyComponent implements OnInit {
 
   setupPagination() {
     if (this.configs.pagination) {
-      this.grid_data = this.display_data.slice(0, this.configs.per_row);
+      this.grid_data = this.display_data.slice(0, this.configs.per_page);
 
       this.angularFixHeaderGridService.pagination_observable$.subscribe(page_number => {
-        const start = page_number * this.configs.per_row;
-        const end = start + this.configs.per_row;
+        const start = page_number * this.configs.per_page;
+        const end = start + this.configs.per_page;
         this.grid_data = this.display_data.slice(start, end);
       });
     }

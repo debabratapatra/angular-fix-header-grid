@@ -12,7 +12,7 @@ export interface Configs {
     actions: Actions;
     filter: boolean;
     pagination: boolean;
-    per_row: number;
+    per_page: number;
     multi_select: boolean;
     show_summary_row: boolean;
     row_class_function: Function;

@@ -21,7 +21,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
   store = new Store(this.angularFixHeaderGridService);
 
   @Input()
-  data: any[] = [];
+  source: any[] = [];
 
   @Input()
   configs: Configs;
@@ -53,7 +53,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     multi_select: false,
     show_summary_row: false,
     pagination: false,
-    per_row: 10,
+    per_page: 10,
     multi_select_width: 'auto',
     action_column_width: '60px',
     row_class_function: () => true,
@@ -95,7 +95,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     this.setDefaultConfigs();
     this.setColumnNames();
     this.store.processData(
-      this.data,
+      this.source,
       this.configs,
       this.edit_tracker,
       this.internal_configs
@@ -148,8 +148,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
   }
 
   validateConfigs() {
-    if (!this.data) {
-      window.console.warn('data can\'t be empty!');
+    if (!this.source) {
+      window.console.warn('source can\'t be empty!');
       return;
     }
     if (!this.configs) {
@@ -171,8 +171,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     this.columns = this.configs.columns ? this.configs.columns : [];
 
     // If columns doesn't exist in user's object.
-    if (!this.configs.columns && this.data[0]) {
-      const column_keys = Object.keys(this.data[0]);
+    if (!this.configs.columns && this.source[0]) {
+      const column_keys = Object.keys(this.source[0]);
 
       // Insert Header and default configuration.
       column_keys.forEach(key => {

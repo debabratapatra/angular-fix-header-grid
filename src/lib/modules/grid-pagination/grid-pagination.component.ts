@@ -30,7 +30,7 @@ export class GridPaginationComponent implements OnInit {
   calculatePage() {
     this.items = [];
     const display_data = this.store.getDisplayData();
-    const total = Math.ceil(display_data.length / this.configs.per_row);
+    const total = Math.ceil(display_data.length / this.configs.per_page);
 
     for (let index = 0; index < total; index++) {
       this.items.push(index + 1);
