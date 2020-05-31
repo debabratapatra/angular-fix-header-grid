@@ -72,6 +72,8 @@ export class GridBodyComponent implements OnInit {
         const end = start + this.configs.per_page;
         this.grid_data = this.display_data.slice(start, end);
       });
+    } else {
+      this.grid_data = this.display_data;
     }
   }
 
