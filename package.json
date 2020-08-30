@@ -1,12 +1,13 @@
 {
   "name": "angular-fix-header-grid",
-  "version": "1.0.4",
-  "homepage": "https://debabratapatra.github.io/pages/angular-fix-header-grid/demo",
+  "version": "1.0.5",
+  "homepage": "https://github.com/debabratapatra/angular-tree-grid#readme",
+  "license" : "MIT",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"
   },
-  "author": { 
+  "author": {
     "name" : "Debabrata Patra",
     "email" : "debabratapatra12@gmail.com",
     "url" : "https://debabratapatra.github.io/"
