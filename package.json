@@ -1,7 +1,7 @@
 {
   "name": "angular-fix-header-grid",
-  "version": "1.0.5",
-  "homepage": "https://github.com/debabratapatra/angular-tree-grid#readme",
+  "version": "1.0.6",
+  "homepage": "https://debabratapatra.github.io/pages/angular-fix-header-grid/demo",
   "license" : "MIT",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
