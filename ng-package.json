@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/angular-fix-header-grid",
+  "dest": "../../dist/angular-fix-header-table",
   "lib": {
     "entryFile": "src/public-api.ts"
   }
