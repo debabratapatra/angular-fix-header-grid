@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '../../../../../lib/store/store';
-import { Column } from '../../../../../lib/models/Column.model';
-import { Configs } from '../../../../../lib/models/Configs.model';
+import { Store } from '../../../../store/store';
+import { Column } from '../../../../models/Column.model';
+import { Configs } from '../../../../models/Configs.model';
 
 @Component({
   selector: '[db-filter-row]',

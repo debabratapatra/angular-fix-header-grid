@@ -39,6 +39,7 @@ export class GridCellActionsComponent implements OnInit {
 
   enableEdit(index) {
     this.edit_tracker[index] = true;
+    this.internal_configs.current_edited_row = {...this.row_data};
   }
 
   findRecordIndex(idx: number) {
