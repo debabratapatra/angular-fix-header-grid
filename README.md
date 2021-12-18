@@ -14,6 +14,14 @@ Click <a href="https://curiouslinks.com/pages/angular-fix-header-grid/demo" targ
 
 Please consider a <a href="https://curiouslinks.com/donate.html" target="_blank">donation</a> if it is useful to you.
 
+## Version
+Choose the correct version for your application.
+
+| Angular  |angular-fix-header-grid |
+|---|---|
+| <= 8  | 1.0.0  |
+| >= 9  | 1.1.0  |
+
 ## Installation
 
 ```bash
