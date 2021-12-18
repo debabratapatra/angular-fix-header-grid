@@ -19,8 +19,8 @@ Choose the correct version for your application.
 
 | Angular  |angular-fix-header-grid |
 |---|---|
-| <= 8  | 1.0.0  |
-| >= 9  | 1.1.0  |
+| <= 8  | 1.0.4  |
+| >= 9  | 1.1.1  |
 
 ## Installation
 
