@@ -1,5 +1,7 @@
 
-# Angular 7 Fix/Freeze Header Grid
+# Angular 17 Fix/Freeze Header Grid
+# NOTE: This is a fork of angular-fix-header-grid
+
 It is a simple grid with all basic feature. It's header is fixed and body is scrollable. For hierarchical data (where there is a Parent-Child relationship), check out this 
 <a href="https://github.com/debabratapatra/angular-tree-grid">Angular Tree Grid</a> Package. If data needs to be grouped by fields then check out this <a href="https://github.com/debabratapatra/ngtreegrid" target="_blank">ngtreegrid</a> Package.
 
