@@ -15,8 +15,8 @@ export class GridPaginationComponent implements OnInit {
   @Input()
   configs: Configs;
 
-  items = [];
-  selections = [];
+  items:number[] = [];
+  selections:boolean[] = [];
 
   constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
 

@@ -1,24 +1,36 @@
 {
   "name": "angular-fix-header-grid",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "homepage": "https://debabratapatra.github.io/pages/angular-fix-header-grid/demo",
-  "license" : "MIT",
+  "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^7.0.0",
-    "@angular/core": "^7.0.0"
+    "@angular/common": "^17.1.0",
+    "@angular/core": "^17.1.0"
   },
   "author": {
-    "name" : "Debabrata Patra",
-    "email" : "debabratapatra12@gmail.com",
-    "url" : "https://debabratapatra.github.io/"
+    "name": "Debabrata Patra",
+    "email": "debabratapatra12@gmail.com",
+    "url": "https://debabratapatra.github.io/"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/debabratapatra/angular-fix-header-grid.git"
+    "type": "git",
+    "url": "https://github.com/debabratapatra/angular-fix-header-grid.git"
   },
   "bugs": {
-    "url" : "https://github.com/debabratapatra/angular-fix-header-grid/issues",
-    "email" : "debabratapatra12@gmail.com"
+    "url": "https://github.com/debabratapatra/angular-fix-header-grid/issues",
+    "email": "debabratapatra12@gmail.com"
   },
-  "keywords": ["Angular", "fix header", "Grid", "Angular 4", "Angular 5", "Angular 6", "Angular 7"]
+  "keywords": [
+    "Angular",
+    "fix header",
+    "Grid",
+    "Angular 4",
+    "Angular 5",
+    "Angular 6",
+    "Angular 7",
+    "Angular 17"
+  ],
+  "dependencies": {
+    "@angular/forms": "^17.1.0"
+  }
 }

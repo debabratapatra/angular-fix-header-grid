@@ -63,7 +63,7 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
   };
   default_column_config: Column = {
     sorted: 0,
-    sort_type: null,
+    sort_type: undefined,
     editable: false,
     hidden: false,
     filter: true,

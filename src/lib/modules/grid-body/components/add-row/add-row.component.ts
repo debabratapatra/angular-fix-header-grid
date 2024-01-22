@@ -34,7 +34,7 @@ export class AddRowComponent implements OnInit {
   ngOnInit() {
     this.raw_data = this.store.getRawData();
     this.columns.forEach(column => {
-      this.row_data[column.name] = '';
+      this.row_data[column.name!] = '';
     });
   }
 

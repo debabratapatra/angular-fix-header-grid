@@ -30,7 +30,7 @@ export class FilterRowComponent implements OnInit {
 
   ngOnInit() {
     this.columns.forEach(column => {
-      this.search_values[column.name] = '';
+      this.search_values[column.name!] = '';
     });
   }
 

@@ -38,7 +38,7 @@ export class GridCellComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.cell_value = this.row_data[this.column.name];
+    this.cell_value = this.row_data[this.column.name!];
   }
 
   onCellClick(event) {

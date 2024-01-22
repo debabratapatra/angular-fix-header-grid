@@ -51,7 +51,7 @@ export class GridCellActionsComponent implements OnInit {
   }
 
   deleteRecord(rec) {
-    const index: number = this.findRecordIndex(rec.idx);
+    const index: number = this.findRecordIndex(rec.idx)!;
     if (this.configs.actions.resolve_delete) {
       const promise = new Promise((resolve, reject) => {
         this.rowdelete.emit({
