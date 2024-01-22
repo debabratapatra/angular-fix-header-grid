@@ -18,7 +18,8 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
     show_add_row: false,
     all_selected: false
   };
-  store = new Store(this.angularFixHeaderGridService);
+  angularFixedHeaderGridService: AngularFixHeaderGridService;
+  store: Store;
 
   @Input()
   source: any[] = [];
@@ -79,7 +80,10 @@ export class AngularFixHeaderGridComponent implements OnInit, AfterViewInit, OnC
    @Output() rowsave: EventEmitter<any> = new EventEmitter();
    @Output() rowdelete: EventEmitter<any> = new EventEmitter();
 
-  constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
+  constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) {
+    this.angularFixedHeaderGridService = angularFixHeaderGridService;
+    this.store = new Store(this.angularFixHeaderGridService);
+   }
 
   ngOnInit() {
     this.validateConfigs();
