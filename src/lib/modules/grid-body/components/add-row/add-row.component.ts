@@ -1,27 +1,27 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Store } from '../../../../store/store';
-import { Column } from '../../../../models/Column.model';
-import { Configs } from '../../../../models/Configs.model';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Store } from "../../../../store/store";
+import { Column } from "../../../../models/Column.model";
+import { Configs } from "../../../../models/Configs.model";
 
 @Component({
-  selector: '[db-add-row]',
-  templateUrl: './add-row.component.html',
-  styleUrls: ['./add-row.component.scss']
+  selector: "[db-add-row]",
+  templateUrl: "./add-row.component.html",
+  styleUrls: ["./add-row.component.scss"],
 })
 export class AddRowComponent implements OnInit {
-  raw_data: any[];
+  raw_data: any[] = [];
   row_data: any = {};
   parents: any[] = [];
-  show_add_row: boolean;
+  show_add_row: boolean = false;
 
   @Input()
-  store: Store;
+  store!: Store;
 
   @Input()
-  columns: Column[];
+  columns!: Column[];
 
   @Input()
-  configs: Configs;
+  configs!: Configs;
 
   @Input()
   internal_configs: any;
@@ -29,16 +29,16 @@ export class AddRowComponent implements OnInit {
   @Output() rowadd: EventEmitter<any> = new EventEmitter();
   @Output() canceledit: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.raw_data = this.store.getRawData();
-    this.columns.forEach(column => {
-      this.row_data[column.name] = '';
+    this.columns.forEach((column) => {
+      this.row_data[column.name!] = "";
     });
   }
 
-  saveAddRecord(e) {
+  saveAddRecord(e: any) {
     this.store.addRecord(this.row_data);
     this.rowadd.emit(this.row_data);
   }
@@ -46,5 +46,4 @@ export class AddRowComponent implements OnInit {
   cancelAddEdit() {
     this.internal_configs.show_add_row = false;
   }
-
 }

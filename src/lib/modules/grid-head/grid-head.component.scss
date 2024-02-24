@@ -1,74 +1,74 @@
-@import '../../angular-fix-header-grid.component.scss';
+@import "../../angular-fix-header-grid.component.scss";
 
 tr {
-    background: #fff;
+  background: #fff;
 
-    th {
-        font-size: 1rem;
-        font-weight: 600;
-        line-height: 1.25;
-        color: #181818;
-        border: 1px solid #cdd5dc;
-        vertical-align: middle;
-        position: relative;
-        box-sizing: border-box;
-        border-bottom: none;
+  th {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #181818;
+    border: 1px solid #cdd5dc;
+    vertical-align: middle;
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: none;
 
-        div {
-            padding: 0.5rem 0.5rem;
-        }
-
-        &.column-hide {
-            display: none;
-        }
-
-        &.action-column {
-            span.icon-container {
-                cursor: pointer;
-            }
-        }
-
-        i.plus {
-            border: 1px solid rgba(0, 0, 0, 0);
-        
-            &:before {
-                content: '';
-                width: 18px;
-                height: 1px;
-                border-top: 2px solid $icon-border-color;
-                display: block;
-                position: absolute;
-                margin-top: -15px;
-                margin-left: 6px;
-            }
-        
-            &:after {
-                content: '';
-                width: 1px;
-                height: 18px;
-                border-right: 2px solid $icon-border-color;
-                display: block;
-                position: absolute;
-                margin-top: -23px;
-                margin-left: 14px;
-            }
-        }
+    div {
+      padding: 0.5rem 0.5rem;
     }
+
+    &.column-hide {
+      display: none;
+    }
+
+    &.action-column {
+      span.icon-container {
+        cursor: pointer;
+      }
+    }
+
+    i.plus {
+      border: 1px solid rgba(0, 0, 0, 0);
+
+      &:before {
+        content: "";
+        width: 18px;
+        height: 1px;
+        border-top: 2px solid $icon-border-color;
+        display: block;
+        position: absolute;
+        margin-top: -15px;
+        margin-left: 6px;
+      }
+
+      &:after {
+        content: "";
+        width: 1px;
+        height: 18px;
+        border-right: 2px solid $icon-border-color;
+        display: block;
+        position: absolute;
+        margin-top: -23px;
+        margin-left: 14px;
+      }
+    }
+  }
 }
 
 th.clear-left-border {
-    border-left: 0 !important;
+  border-left: 0 !important;
 }
 
 th.clear-right-border {
-    border-right: 0 !important;
+  border-right: 0 !important;
 }
 
 .column-hide {
-    display: none;
+  display: none;
 }
 
 svg {
-    width: 25px;
-    padding-right: 3px;
+  width: 25px;
+  padding-right: 3px;
 }

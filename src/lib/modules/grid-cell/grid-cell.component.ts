@@ -1,52 +1,56 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Configs } from '../../models/Configs.model';
-import { Column } from '../../models/Column.model';
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { Configs } from "../../models/Configs.model";
+import { Column } from "../../models/Column.model";
 
 @Component({
-  selector: 'db-grid-cell',
-  templateUrl: './grid-cell.component.html',
-  styleUrls: ['./grid-cell.component.scss']
+  selector: "db-grid-cell",
+  templateUrl: "./grid-cell.component.html",
+  styleUrls: ["./grid-cell.component.scss"],
 })
 export class GridCellComponent implements OnInit {
-  cell_value: string;
-  @Input()
-  configs: Configs;
+  cell_value: string = "";
 
   @Input()
-  index: number;
+  configs!: Configs;
+
+  @Input()
+  index!: number;
 
   @Input()
   row_data: any;
 
   @Input()
-  column: Column;
+  column!: Column;
 
   @Input()
   expand_tracker: any;
 
   @Input()
-  cellclick: EventEmitter<any>;
+  cellclick!: EventEmitter<any>;
 
   @Input()
-  edit_on: boolean;
+  edit_on!: boolean;
 
   @Output() rowexpand: EventEmitter<any> = new EventEmitter();
   @Output() rowcollapse: EventEmitter<any> = new EventEmitter();
   @Output() canceledit: EventEmitter<any> = new EventEmitter();
   @Output() editcomplete: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.cell_value = this.row_data[this.column.name];
+    this.cell_value = this.row_data[this.column.name!];
   }
 
-  onCellClick(event) {
-    this.cellclick.emit({column: this.column, row: this.row_data, event: event});
+  onCellClick(event: any) {
+    this.cellclick.emit({
+      column: this.column,
+      row: this.row_data,
+      event: event,
+    });
   }
 
-  onEditComplete($event) {
-    this.editcomplete.emit({event: $event, data: this.row_data});
+  onEditComplete($event: any) {
+    this.editcomplete.emit({ event: $event, data: this.row_data });
   }
-
 }

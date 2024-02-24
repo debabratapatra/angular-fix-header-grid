@@ -4,22 +4,22 @@ $sort-hover-color: #afafaf;
 $sort-active-color: rgb(138, 137, 137);
 
 div.fix-table-container {
-    display: inline-block;
-    overflow: auto;
+  display: inline-block;
+  overflow: auto;
 }
 
 .db-grid-view {
-    line-height: 1.5em;
-    border-collapse: collapse;
-    border-spacing: 0;
-    display: table;
-    max-width: 100%;
-    overflow: auto;
-    word-break: normal;
-    border: solid 1px gray;
-    color: #4b4b4b;    
+  line-height: 1.5em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+  max-width: 100%;
+  overflow: auto;
+  word-break: normal;
+  border: solid 1px gray;
+  color: #4b4b4b;
 }
 
 table.db-grid-header-view {
-    border-bottom: none;
+  border-bottom: none;
 }

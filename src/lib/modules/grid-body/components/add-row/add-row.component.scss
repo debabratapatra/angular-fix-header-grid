@@ -1,13 +1,13 @@
-@import '../../grid-body.component.scss';
+@import "../../grid-body.component.scss";
 
 svg {
-    width: 25px;
-    padding-right: 4px;
+  width: 25px;
+  padding-right: 4px;
 }
 
 div.icon-container {
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-    cursor: pointer;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
 }

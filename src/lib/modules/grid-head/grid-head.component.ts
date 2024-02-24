@@ -1,20 +1,20 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { Store } from '../../store/store';
-import { Configs } from '../../models/Configs.model';
-import { Column } from '../../models/Column.model';
-import { AngularFixHeaderGridService } from '../../angular-fix-header-grid.service';
+import { Component, OnInit, Input, EventEmitter } from "@angular/core";
+import { Store } from "../../store/store";
+import { Configs } from "../../models/Configs.model";
+import { Column } from "../../models/Column.model";
+import { AngularFixHeaderGridService } from "../../angular-fix-header-grid.service";
 
 @Component({
-  selector: '[db-grid-head]',
-  templateUrl: './grid-head.component.html',
-  styleUrls: ['./grid-head.component.scss']
+  selector: "[db-grid-head]",
+  templateUrl: "./grid-head.component.html",
+  styleUrls: ["./grid-head.component.scss"],
 })
 export class GridHeadComponent implements OnInit {
   @Input()
-  store: Store;
+  store!: Store;
 
   @Input()
-  configs: Configs;
+  configs!: Configs;
 
   @Input()
   edit_tracker: any;
@@ -23,24 +23,25 @@ export class GridHeadComponent implements OnInit {
   internal_configs: any;
 
   @Input()
-  columns: Column[];
+  columns!: Column[];
 
   @Input()
-  rowselectall: EventEmitter<any>;
+  rowselectall!: EventEmitter<any>;
 
   @Input()
-  rowdeselectall: EventEmitter<any>;
+  rowdeselectall!: EventEmitter<any>;
 
-  constructor(private angularFixHeaderGridService: AngularFixHeaderGridService) { }
+  constructor(
+    private angularFixHeaderGridService: AngularFixHeaderGridService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   addRow() {
     this.internal_configs.show_add_row = true;
   }
 
-  selectAll(e) {
+  selectAll(e: any) {
     if (e.target.checked) {
       this.angularFixHeaderGridService.selectAll(this.store.getDisplayData());
       this.rowselectall.emit(this.store.getDisplayData());
@@ -49,5 +50,4 @@ export class GridHeadComponent implements OnInit {
       this.rowdeselectall.emit(e);
     }
   }
-
 }

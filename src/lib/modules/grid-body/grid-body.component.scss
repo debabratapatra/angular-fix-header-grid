@@ -1,31 +1,31 @@
-@import '../../angular-fix-header-grid.component.scss';
+@import "../../angular-fix-header-grid.component.scss";
 
 tr {
-    &.selected {
-        background-color: #e2e7eb;
+  &.selected {
+    background-color: #e2e7eb;
+  }
+
+  td {
+    border: 1px solid #cdd5dc;
+    vertical-align: middle;
+    position: relative;
+    padding: 0.5rem 0.5rem;
+    box-sizing: border-box;
+
+    &.checkbox_column {
+      text-align: center;
     }
 
-    td {
-        border: 1px solid #cdd5dc;
-        vertical-align: middle;
-        position: relative;
-        padding: 0.5rem 0.5rem;
-        box-sizing: border-box;
-
-        &.checkbox_column {
-            text-align: center;
-        }
-    
-        &.column-hide {
-            display: none;
-        }
-
-        &.clear-left-border {
-            border-left: 0 !important;
-        }
-
-        &.clear-right-border {
-            border-right: 0 !important;
-        }
+    &.column-hide {
+      display: none;
     }
+
+    &.clear-left-border {
+      border-left: 0 !important;
+    }
+
+    &.clear-right-border {
+      border-right: 0 !important;
+    }
+  }
 }

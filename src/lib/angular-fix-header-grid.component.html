@@ -1,13 +1,6 @@
-<table [attr.class]="'db-grid-view db-grid-header-view' + configs.css.table_class">
-    <thead 
-        db-grid-head
-        [store]="store"
-        [internal_configs]="internal_configs"
-        [edit_tracker]="edit_tracker"
-        [rowselectall]="rowselectall"
-        [rowdeselectall]="rowdeselectall"
-        [columns]="columns"
-        [configs]="configs">
+<table [attr.class]="'db-grid-view db-grid-header-view ' + configs.css?.table_class">
+    <thead db-grid-head [store]="store" [internal_configs]="internal_configs" [edit_tracker]="edit_tracker"
+        [rowselectall]="rowselectall" [rowdeselectall]="rowdeselectall" [columns]="columns" [configs]="configs">
     </thead>
     <!-- <thead>
         <tr>
@@ -18,25 +11,11 @@
     </thead> -->
 </table>
 <div [ngStyle]="{'height': configs.height}" class="fix-table-container">
-    <table [attr.class]="'db-grid-view db-grid-body-view ' + configs.css.table_class">
-        <tbody 
-        db-grid-body
-        [store]="store"
-        [edit_tracker]="edit_tracker"
-        [internal_configs]="internal_configs"
-        [columns]="columns"
-        [configs]="configs"
-        [cellclick]="cellclick"
-        [rowdelete]="rowdelete"
-        [rowsave]="rowsave"
-        [rowadd]="rowadd"
-        [rowselect]="rowselect"
-        [rowdeselect]="rowdeselect"
-        >        
+    <table [attr.class]="'db-grid-view db-grid-body-view ' + configs.css?.table_class">
+        <tbody db-grid-body [store]="store" [edit_tracker]="edit_tracker" [internal_configs]="internal_configs"
+            [columns]="columns" [configs]="configs" [cellclick]="cellclick" [rowdelete]="rowdelete" [rowsave]="rowsave"
+            [rowadd]="rowadd" [rowselect]="rowselect" [rowdeselect]="rowdeselect">
         </tbody>
     </table>
 </div>
-<db-grid-pagination
-    [store]="store"
-    [configs]="configs"
-></db-grid-pagination>
+<db-grid-pagination [store]="store" [configs]="configs"></db-grid-pagination>
